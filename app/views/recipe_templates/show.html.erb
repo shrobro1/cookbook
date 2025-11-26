@@ -1,0 +1,156 @@
+<h1>
+  Recipe #<%= @the_recipe.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/recipes">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_recipe/<%= @the_recipe.id %>">
+      Delete recipe
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Title
+    </dt>
+    <dd>
+      <%= @the_recipe.title %>
+    </dd>
+
+    <dt>
+      Description
+    </dt>
+    <dd>
+      <%= @the_recipe.description %>
+    </dd>
+
+    <dt>
+      Ingredients
+    </dt>
+    <dd>
+      <%= @the_recipe.ingredients %>
+    </dd>
+
+    <dt>
+      Instructions
+    </dt>
+    <dd>
+      <%= @the_recipe.instructions %>
+    </dd>
+
+    <dt>
+      Servings
+    </dt>
+    <dd>
+      <%= @the_recipe.servings %>
+    </dd>
+
+    <dt>
+      Creator
+    </dt>
+    <dd>
+      <%= @the_recipe.creator_id %>
+    </dd>
+
+    <dt>
+      Source url
+    </dt>
+    <dd>
+      <%= @the_recipe.source_url %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_recipe.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_recipe.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit recipe
+    </h2>
+  </header>
+
+  <form action="/modify_recipe/<%= @the_recipe.id %>"  method="post" >
+    <div>
+      <label for="title_box">
+        Title
+      </label>
+
+      <input type="text" id="title_box" name="query_title" value="<%= @the_recipe.title %>">
+    </div>
+
+    <div>
+      <label for="description_box">
+        Description
+      </label>
+
+      <input type="text" id="description_box" name="query_description" value="<%= @the_recipe.description %>">
+    </div>
+
+    <div>
+      <label for="ingredients_box">
+        Ingredients
+      </label>
+
+      <input type="text" id="ingredients_box" name="query_ingredients" value="<%= @the_recipe.ingredients %>">
+    </div>
+
+    <div>
+      <label for="instructions_box">
+        Instructions
+      </label>
+
+      <input type="text" id="instructions_box" name="query_instructions" value="<%= @the_recipe.instructions %>">
+    </div>
+
+    <div>
+      <label for="servings_box">
+        Servings
+      </label>
+
+      <input type="text" id="servings_box" name="query_servings" value="<%= @the_recipe.servings %>">
+    </div>
+
+    <div>
+      <label for="creator_id_box">
+        Creator
+      </label>
+
+      <input type="text" id="creator_id_box" name="query_creator_id" value="<%= @the_recipe.creator_id %>">
+    </div>
+
+    <div>
+      <label for="source_url_box">
+        Source url
+      </label>
+
+      <input type="text" id="source_url_box" name="query_source_url" value="<%= @the_recipe.source_url %>">
+    </div>
+
+    <button type="submit">
+      Update recipe
+    </button>
+  </form>
+</article>
+
+<hr>
