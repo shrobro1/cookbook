@@ -52,13 +52,7 @@
       <input type="text" id="servings_box" name="query_servings">
     </div>
 
-    <div>
-      <label for="creator_id_box">
-        Creator
-      </label>
 
-      <input type="text" id="creator_id_box" name="query_creator_id">
-    </div>
 
     <div>
       <label for="source_url_box">
@@ -81,7 +75,7 @@
     <% @list_of_recipes.each do |a_recipe| %>
       <li>
         <a href="/recipes/<%= a_recipe.id %>">
-          Recipe #<%= a_recipe.id %>
+          <%= a_recipe.title %>
         </a>
       </li>
     <% end %>

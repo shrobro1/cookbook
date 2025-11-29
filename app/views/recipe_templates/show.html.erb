@@ -1,5 +1,5 @@
 <h1>
-  Recipe #<%= @the_recipe.id %> details
+  <%= @the_recipe.title %> Details
 </h1>
 
 <article>
@@ -9,11 +9,14 @@
     </a>
   </div>
 
+  <%if current_user.id == @the_recipe.creator_id%>
   <div>
     <a href="/delete_recipe/<%= @the_recipe.id %>">
       Delete recipe
     </a>
   </div>
+  <%end%>
+
   <dl>
     <dt>
       Title
@@ -82,7 +85,7 @@
 
 <hr>
 
-
+<%if current_user.id == @the_recipe.creator_id%>
 <article>
   <header>
     <h2>
@@ -152,5 +155,6 @@
     </button>
   </form>
 </article>
+<%end%>
 
 <hr>

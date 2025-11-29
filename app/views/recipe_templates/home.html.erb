@@ -1,1 +1,30 @@
-<h1> hello world </h1>
+<a href="/users/sign_up">Create An Account</a>
+<a href="/users/sign_in">Sign In</a>
+<% if current_user.present? %>
+  <a href="/recipes">Recipes</a>
+<%end%>
+
+<article>
+  <header>
+    <h2>
+      Add a new recipe
+    </h2>
+    <p>Type a detailed prompt about your desired dish. Include essential ingredients, dietary restrictions, etc.</p>
+  </header>
+
+  <form action="/user_prompt" method="post">
+    <div>
+      <label for="prompt_box">
+        Prompt
+      </label>
+
+      <input type="text" id="prompt_box" name="query_prompt">
+    </div>
+
+        <button type="submit">
+      Submit
+    </button>
+  </form>
+</article>
+
+<p>OpenAI test: <%= @openai_test %></p>
