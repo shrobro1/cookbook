@@ -1,4 +1,10 @@
 class RecipesController < ApplicationController
+
+  def home
+    render({ :template => "recipe_templates/home" })
+  end
+
+
   def index
     matching_recipes = Recipe.all
 
