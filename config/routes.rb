@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   # Routes for the Recipe resource:
 
-  get("/",{:controller => "recipes", :action => "home"})
+  root to: "recipes#home"
+
   # CREATE
   post("/insert_recipe", { :controller => "recipes", :action => "create" })
 

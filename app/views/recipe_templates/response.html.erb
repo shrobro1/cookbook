@@ -1,1 +1,56 @@
-<p> <%=@answer%> </p>
+
+<article>
+  <header>
+    <h2>
+      Add a new recipe
+    </h2>
+  </header>
+
+  <form action="/insert_recipe" method="post">
+    <div>
+      <label for="title_box">
+        Title
+      </label>
+
+      <input type="text" id="title_box" name="query_title" value="<%= @data.fetch("title") %>">
+      
+    </div>
+
+    <div>
+      <label for="recipe_description_box">Description</label>
+     <textarea
+      id="recipe_description_box"
+      name="query_description"
+      rows="3"><%= @data.fetch("description") %></textarea>
+    </div>
+
+    <div>
+     <label for="recipe_ingredients_box">Ingredients</label>
+      <textarea
+       id="recipe_ingredients_box"
+       name="query_ingredients"
+       rows="5"><%= @data.fetch("ingredients") %>
+      </textarea>
+    </div>
+
+   <div>
+     <label for="recipe_instructions_box">Instructions</label>
+     <textarea
+      id="recipe_instructions_box"
+      name="query_instructions"
+      rows="5"><%= @data.fetch("instructions") %></textarea>
+   </div>
+
+    <div>
+      <label for="servings_box">
+        Servings
+      </label>
+
+      <input type="text" id="servings_box" name="query_servings" value = "<%= @data.fetch("servings")%>">
+    </div>
+
+    <button type="submit">
+      Create recipe
+    </button>
+  </form>
+</article>

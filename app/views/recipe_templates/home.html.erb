@@ -1,15 +1,11 @@
-<a href="/users/sign_up">Create An Account</a>
-<a href="/users/sign_in">Sign In</a>
-<% if current_user.present? %>
-  <a href="/recipes">Recipes</a>
-<%end%>
+
 
 <article>
   <header>
     <h2>
       Add a new recipe
     </h2>
-    <p>Type a detailed prompt about your desired dish. Include essential ingredients, dietary restrictions, etc.</p>
+    <p>Have AI generate a recipe for you or <a href="/recipes">create a recipe yourself.</a></p>
   </header>
 
   <form action="/user_prompt" method="post">
@@ -18,7 +14,7 @@
         Prompt
       </label>
 
-      <input type="text" id="prompt_box" name="query_prompt">
+      <input type="text" id="prompt_box" name="query_prompt" value="Generate a recipe for...">
     </div>
 
         <button type="submit">
@@ -26,5 +22,3 @@
     </button>
   </form>
 </article>
-
-<p>OpenAI test: <%= @openai_test %></p>

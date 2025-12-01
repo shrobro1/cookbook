@@ -14,5 +14,12 @@
 #  creator_id   :integer
 #
 class Recipe < ApplicationRecord
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :ingredients, presence: true
+  validates :instructions, presence: true
+  validates :servings, presence: true
+  validates :creator_id, presence: true
+
   belongs_to :creator, required: true, class_name: "User", foreign_key: "creator_id"
 end

@@ -10,6 +10,9 @@
 
     <%= yield :head %>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
+
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
@@ -22,7 +25,58 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+
+
+  <body class="pico">
+    <header>
+      <div class="container-two-thirds">
+        <nav>
+          <ul>
+            <li>
+              <a href="/">
+                <strong>
+                  Cook Book
+                </strong>
+              </a>
+            </li>
+            <% if current_user == nil %>
+              <li>
+                <a href="/users/sign_in">Log in</a>
+              </li>
+              <li>
+                <a href="/users/sign_up">Sign up</a>
+              </li>
+            <% else%>
+              <li>
+                <a href="/users/edit">Edit profile</a>
+              </li>
+              <li>
+                <a href="/users/sign_out">Log out</a>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <% if notice.present? %>
+      <div style="color: green">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div style="color: red">
+        <%= alert %>
+      </div>
+    <% end %>
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer class="text-center">
+      AppDev 2025. All rights reserved.
+    </footer>
   </body>
 </html>
