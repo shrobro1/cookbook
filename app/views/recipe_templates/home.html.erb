@@ -1,11 +1,17 @@
-
+<%if current_user == nil%>
+  <h1>Hi! Welcome to Cook Book!</h1>
+  <div>
+    <p><a href="/users/sign_up">Create an Account</a> or <a href="/users/sign_in">Login</a> to get started creating and saving your own recipes.</p>
+    <p>Alternatively, you can view all user submitted recipes <a href="/recipes">here</a></p>
+  </div>
+  <hr>
+<%else%>
 
 <article>
   <header>
     <h2>
-      Add a new recipe
+      Add a new recipe using AI
     </h2>
-    <p>Have AI generate a recipe for you or <a href="/recipes">create a recipe yourself.</a></p>
   </header>
 
   <form action="/user_prompt" method="post">
@@ -22,3 +28,62 @@
     </button>
   </form>
 </article>
+
+<h1>Or</h1>
+
+<article>
+  <header>
+    <h2>
+      Manually Add A New Recipe
+    </h2>
+  </header>
+
+    <form action="/insert_recipe" method="post">
+    <div>
+      <label for="title_box">
+        Title
+      </label>
+
+      <input type="text" id="title_box" name="query_title">
+      
+    </div>
+
+    <div>
+      <label for="recipe_description_box">Description</label>
+     <textarea
+      id="recipe_description_box"
+      name="query_description"
+      rows="3"></textarea>
+    </div>
+
+    <div>
+     <label for="recipe_ingredients_box">Ingredients</label>
+      <textarea
+       id="recipe_ingredients_box"
+       name="query_ingredients"
+       rows="5">
+      </textarea>
+    </div>
+
+   <div>
+     <label for="recipe_instructions_box">Instructions</label>
+     <textarea
+      id="recipe_instructions_box"
+      name="query_instructions"
+      rows="5"></textarea>
+   </div>
+
+    <div>
+      <label for="servings_box">
+        Servings
+      </label>
+
+      <input type="text" id="servings_box" name="query_servings">
+    </div>
+
+    <button type="submit">
+      Create recipe
+    </button>
+  </form>
+</article>
+<%end%>

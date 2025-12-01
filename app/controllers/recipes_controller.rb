@@ -3,21 +3,6 @@ class RecipesController < ApplicationController
   def home
     require "openai"
 
-    #client = OpenAI::Client.new
-
-    #begin
-      #completion = client.chat.completions.create(
-        #model: :"gpt-4o-mini",
-        #messages: [
-          #{ role: "user", content: "Reply with exactly: API OK" }
-        #]
-      #)
-
-    # @openai_test = completion.choices.first.message.content
-    #rescue => e
-    # @openai_test = "Error talking to OpenAI: #{e.class} - #{e.message}"
-    #end
-
     render template: "recipe_templates/home"
   end
 
@@ -143,4 +128,10 @@ class RecipesController < ApplicationController
       render({ :template => "recipe_templates/response" })
   end
 
+  def my_index
+    matching_recipes = Recipe.where({ :creator_id => current_user.id})
+    @list_of_recipes = matching_recipes.order({ :created_at => :desc })
+
+    render({ :template => "recipe_templates/my_recipes" })
+  end
 end

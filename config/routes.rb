@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get("/recipes/:path_id", { :controller => "recipes", :action => "show" })
 
+  get("/my_recipes", { :controller => "recipes", :action => "my_index" })
+
   # UPDATE
 
   post("/modify_recipe/:path_id", { :controller => "recipes", :action => "update" })
