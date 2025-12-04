@@ -1,10 +1,11 @@
 <%if current_user == nil%>
+<article>
   <h1>Hi! Welcome to Cook Book!</h1>
   <div>
     <p><a href="/users/sign_up">Create an Account</a> or <a href="/users/sign_in">Login</a> to get started creating and saving your own recipes.</p>
     <p>Alternatively, you can view all user submitted recipes <a href="/recipes">here</a></p>
   </div>
-  <hr>
+  </article>
 <%else%>
 
 <article>
@@ -28,8 +29,6 @@
     </button>
   </form>
 </article>
-
-<h1>Or</h1>
 
 <article>
   <header>

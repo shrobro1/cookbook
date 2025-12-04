@@ -56,8 +56,8 @@ class RecipesController < ApplicationController
     the_recipe.ingredients = params.fetch("query_ingredients")
     the_recipe.instructions = params.fetch("query_instructions")
     the_recipe.servings = params.fetch("query_servings")
-    the_recipe.creator_id = params.fetch("query_creator_id")
-    the_recipe.source_url = params.fetch("query_source_url")
+   
+
 
     if the_recipe.valid?
       the_recipe.save

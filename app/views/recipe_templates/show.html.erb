@@ -1,8 +1,9 @@
+
+
+<article>
 <h1>
   <%= @the_recipe.title %> Details
 </h1>
-
-<article>
   <div>
     <a href="/recipes">
       Go back
@@ -52,38 +53,10 @@
     <dd>
       <%= @the_recipe.servings %>
     </dd>
-
-    <dt>
-      Creator
-    </dt>
-    <dd>
-      <%= @the_recipe.creator_id %>
-    </dd>
-
-    <dt>
-      Source url
-    </dt>
-    <dd>
-      <%= @the_recipe.source_url %>
-    </dd>
-
-    <dt>
-      Created at
-    </dt>
-    <dd>
-      <%= time_ago_in_words(@the_recipe.created_at) %> ago
-    </dd>
-
-    <dt>
-      Updated at
-    </dt>
-    <dd>
-      <%= time_ago_in_words(@the_recipe.updated_at) %> ago
-    </dd>
   </dl>
 </article>
 
-<hr>
+
 
 <%if current_user.id == @the_recipe.creator_id%>
 <article>
@@ -121,7 +94,7 @@
       <label for="instructions_box">
         Instructions
       </label>
-      <textarea nname="query_instructions" id="instructions_box" rows="5"> <%= @the_recipe.instructions %></textarea>
+      <textarea name="query_instructions" id="instructions_box" rows="5"> <%= @the_recipe.instructions %></textarea>
     </div>
 
     <div>
