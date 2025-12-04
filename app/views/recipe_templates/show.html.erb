@@ -36,14 +36,14 @@
       Ingredients
     </dt>
     <dd>
-      <%= @the_recipe.ingredients %>
+      <%= simple_format(@the_recipe.ingredients) %>
     </dd>
 
     <dt>
       Instructions
     </dt>
     <dd>
-      <%= @the_recipe.instructions %>
+      <%= simple_format(@the_recipe.instructions) %>
     </dd>
 
     <dt>
@@ -114,16 +114,14 @@
       <label for="ingredients_box">
         Ingredients
       </label>
-
-      <input type="text" id="ingredients_box" name="query_ingredients" value="<%= @the_recipe.ingredients %>">
+      <textarea name="query_ingredients" id="ingredients_box" rows="4"> <%= @the_recipe.ingredients %> </textarea>
     </div>
 
     <div>
       <label for="instructions_box">
         Instructions
       </label>
-
-      <input type="text" id="instructions_box" name="query_instructions" value="<%= @the_recipe.instructions %>">
+      <textarea nname="query_instructions" id="instructions_box" rows="5"> <%= @the_recipe.instructions %></textarea>
     </div>
 
     <div>
@@ -134,21 +132,7 @@
       <input type="text" id="servings_box" name="query_servings" value="<%= @the_recipe.servings %>">
     </div>
 
-    <div>
-      <label for="creator_id_box">
-        Creator
-      </label>
 
-      <input type="text" id="creator_id_box" name="query_creator_id" value="<%= @the_recipe.creator_id %>">
-    </div>
-
-    <div>
-      <label for="source_url_box">
-        Source url
-      </label>
-
-      <input type="text" id="source_url_box" name="query_source_url" value="<%= @the_recipe.source_url %>">
-    </div>
 
     <button type="submit">
       Update recipe
