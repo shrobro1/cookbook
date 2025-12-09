@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-
   def home
     require "openai"
 
@@ -37,7 +36,6 @@ class RecipesController < ApplicationController
     the_recipe.instructions = params.fetch("query_instructions")
     the_recipe.servings = params.fetch("query_servings")
     the_recipe.creator_id = current_user.id
-   
 
     if the_recipe.valid?
       the_recipe.save
@@ -56,9 +54,6 @@ class RecipesController < ApplicationController
     the_recipe.ingredients = params.fetch("query_ingredients")
     the_recipe.instructions = params.fetch("query_instructions")
     the_recipe.servings = params.fetch("query_servings")
-   
-
-
     if the_recipe.valid?
       the_recipe.save
       redirect_to("/recipes/#{the_recipe.id}", { :notice => "Recipe updated successfully." } )
@@ -86,9 +81,6 @@ class RecipesController < ApplicationController
 
       # Initialize OpenAI client
       client = OpenAI::Client.new
-      
-      
-
      begin
        completion = client.chat.completions.create(
          model: "gpt-4o-mini",
@@ -113,23 +105,21 @@ class RecipesController < ApplicationController
               - Do not include any text before or after the JSON." },
             { role: "user", content: user_input }
          ],
-          
+
         )
 
        json_string = completion.choices.first.message.content
        @data = JSON.parse(json_string)
 
-      
-
     rescue => e
       @error = "Error talking to OpenAI: #{e.class} - #{e.message}"
-      
+
      end
       render({ :template => "recipe_templates/response" })
   end
 
   def my_index
-    matching_recipes = Recipe.where({ :creator_id => current_user.id})
+    matching_recipes = Recipe.where({ :creator_id => current_user.id })
     @list_of_recipes = matching_recipes.order({ :created_at => :desc })
 
     render({ :template => "recipe_templates/my_recipes" })
@@ -147,8 +137,6 @@ class RecipesController < ApplicationController
 
       # Initialize OpenAI client
       client = OpenAI::Client.new
-      
-      
 
      begin
        completion = client.chat.completions.create(
@@ -174,22 +162,16 @@ class RecipesController < ApplicationController
               - Do not include any text before or after the JSON." },
             { role: "user", content: parsed_page.text }
          ],
-          
+
         )
 
        json_string = completion.choices.first.message.content
        @data = JSON.parse(json_string)
 
-      
-
     rescue => e
       @error = "Error talking to OpenAI: #{e.class} - #{e.message}"
-      
+
      end
       render({ :template => "recipe_templates/response" })
   end
-
-
-
-
 end
