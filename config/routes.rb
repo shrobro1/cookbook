@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   post("/user_prompt", {:controller => "recipes", :action => "user_prompt"})
 
+  post("/user_link", {:controller => "recipes", :action => "user_link"})
+
   # This is a blank app! Pick your first screen, build out the RCAV, and go from there. E.g.:
   # get("/your_first_screen", { :controller => "pages", :action => "first" })
 end

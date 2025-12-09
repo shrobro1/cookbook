@@ -134,4 +134,62 @@ class RecipesController < ApplicationController
 
     render({ :template => "recipe_templates/my_recipes" })
   end
+
+  def user_link
+    if current_user == nil
+      redirect_to("/users/sign_in", { :alert => "You must be signed in to create a recipe." })
+      return
+    end
+
+     url = params[:query_link]
+     webpage = HTTP.get(url)
+     parsed_page = Nokogiri::HTML(webpage.body.to_s)
+
+      # Initialize OpenAI client
+      client = OpenAI::Client.new
+      
+      
+
+     begin
+       completion = client.chat.completions.create(
+         model: "gpt-4o-mini",
+         response_format: { type: "json_object" },
+         messages: [
+            { role: "system", content: "
+              You are a recipe extraction engine.
+              Given a link to recipe content, you MUST return a JSON object
+              with exactly these keys:
+
+              {
+                title: string,
+                description: string,
+                ingredients: string,
+                instructions: string,
+                servings: integer
+              }
+
+              - ingredients should be a multiline string, one ingredient per line.
+              - instructions should be a multiline string, one step per line.
+              - Do not include any other keys.
+              - Do not include any text before or after the JSON." },
+            { role: "user", content: parsed_page.text }
+         ],
+          
+        )
+
+       json_string = completion.choices.first.message.content
+       @data = JSON.parse(json_string)
+
+      
+
+    rescue => e
+      @error = "Error talking to OpenAI: #{e.class} - #{e.message}"
+      
+     end
+      render({ :template => "recipe_templates/response" })
+  end
+
+
+
+
 end
