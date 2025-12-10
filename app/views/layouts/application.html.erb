@@ -31,42 +31,26 @@
 
 
   <body class="pico">
-    <header>
-      <div class="mx-auto" style="width: 80%;">
-        <nav>
-          <ul>
-            <li>
-              <a href="/">
-                <strong>
-                  Cook Book
-                </strong>
-              </a>
-            </li>
-            <% if current_user == nil %>
-              <li>
-                <a href="/users/sign_in">Log in</a>
-              </li>
-              <li>
-                <a href="/users/sign_up">Sign up</a>
-              </li>
-            <% else%>
-              <li>
-                <a href="/recipes">All Recipes</a>
-              </li>
-              <li>
-                <a href="/my_recipes">My Recipes</a>
-              </li>
-              <li>
-                <a href="/users/edit">Edit profile</a>
-              </li>
-              <li>
-                <a href="/users/sign_out">Log out</a>
-              </li>
-            <% end %>
-          </ul>
-        </nav>
+    <header class="app-header">
+  <div class="nav-container">
+    <nav class="nav-bar">
+      <a href="/" class="nav-logo">Cook Book</a>
+
+      <div class="nav-links">
+        <% if current_user.nil? %>
+          <a href="/users/sign_in" class="nav-link">Log in</a>
+          <a href="/users/sign_up" class="nav-link">Sign up</a>
+        <% else %>
+          <a href="/recipes" class="nav-link">All Recipes</a>
+          <a href="/my_recipes" class="nav-link">My Recipes</a>
+          <a href="/users/edit" class="nav-link">Edit Profile</a>
+          <a href="/users/sign_out" class="nav-link">Log out</a>
+        <% end %>
       </div>
-    </header>
+    </nav>
+  </div>
+</header>
+
 
     <main>
       <div class="mx-auto" style="width: 80%;">

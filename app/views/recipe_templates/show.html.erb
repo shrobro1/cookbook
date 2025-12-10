@@ -1,51 +1,32 @@
 
 
-<article>
-<h1>
-  <%= @the_recipe.title %> Details
-</h1>
-  <div>
-    <a href="/recipes">
-      Go back
-    </a>
-  </div>
+<article class="recipe-show">
+  <header class="recipe-header">
+    <h1><%= @the_recipe.title %></h1>
+    <a href="/recipes" class="btn-edit">← Back to recipes</a>
+  </header>
 
-  <dl>
-    <dt>
-      Title
-    </dt>
-    <dd>
-      <%= @the_recipe.title %>
-    </dd>
+  <section class="recipe-meta">
+    <p class="recipe-description"><%= @the_recipe.description %></p>
+    <p class="recipe-servings">
+      <strong>Servings:</strong> <%= @the_recipe.servings %>
+    </p>
+  </section>
 
-    <dt>
-      Description
-    </dt>
-    <dd>
-      <%= @the_recipe.description %>
-    </dd>
-
-    <dt>
-      Ingredients
-    </dt>
-    <dd>
+  <section class="recipe-section">
+    <h2>Ingredients</h2>
+    <div class="recipe-body">
       <%= simple_format(@the_recipe.ingredients) %>
-    </dd>
+    </div>
+  </section>
 
-    <dt>
-      Instructions
-    </dt>
-    <dd>
+  <section class="recipe-section">
+    <h2>Instructions</h2>
+    <div class="recipe-body">
       <%= simple_format(@the_recipe.instructions) %>
-    </dd>
+    </div>
+  </section>
 
-    <dt>
-      Servings
-    </dt>
-    <dd>
-      <%= @the_recipe.servings %>
-    </dd>
-  </dl>
 
     <% if current_user.nil? %>
 

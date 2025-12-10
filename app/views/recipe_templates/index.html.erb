@@ -1,18 +1,12 @@
+<article class="recipes-list-page">
+  <h1 class="recipes-title">All Recipes</h1>
 
-
-
-
-<article>
-<h1>
-  List of all recipes
-</h1>
-  <ul>
-    <% @list_of_recipes.each do |a_recipe| %>
-      <li>
-        <a href="/recipes/<%= a_recipe.id %>">
-          <%= a_recipe.title %>
-        </a>
-      </li>
+  <div class="recipes-list-group">
+    <% @list_of_recipes.each do |recipe| %>
+      <a href="/recipes/<%= recipe.id %>" class="recipes-list-item">
+        <span class="recipes-list-title"><%= recipe.title %></span>
+        <span class="recipes-list-arrow">→</span>
+      </a>
     <% end %>
-  </ul>
+  </div>
 </article>
