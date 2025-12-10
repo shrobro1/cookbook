@@ -377,3 +377,148 @@ footer {
     justify-content: center;
   }
 }
+/* Homepage container */
+.home-guest {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* Title */
+.home-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin-bottom: 0.5rem;
+}
+
+/* Subtitle text */
+.home-subtitle {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  margin: 0 auto;
+  max-width: 480px;
+}
+
+/* Button container */
+.home-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.home-btn {
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.home-btn.primary {
+  background: #f97316;
+  color: #fff;
+}
+
+.home-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.35);
+}
+
+.home-btn.secondary {
+  background: transparent;
+  border: 1px solid #94a3b8;
+  color: #e2e8f0;
+}
+
+.home-btn.secondary:hover {
+  background: rgba(148, 163, 184, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Browse link */
+.home-browse {
+  margin-top: 0.6rem;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.browse-link {
+  color: #f97316;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.browse-link:hover {
+  text-decoration: underline;
+}
+/* Layout of the three tools */
+.recipe-tools {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* 2 columns on medium screens, 3 if you want later */
+@media (min-width: 768px) {
+  .recipe-tools {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Individual tool card */
+.tool-card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 18px;
+  padding: 1.6rem 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Card header */
+.tool-card header h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  color: #f9fafb;
+}
+
+/* Space out form fields */
+.tool-card form > div {
+  margin-bottom: 0.9rem;
+}
+
+/* Inputs / textareas full width and styled */
+.tool-card input[type="text"],
+.tool-card textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #4b5563;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.tool-card textarea {
+  resize: vertical;
+}
+
+/* Labels */
+.tool-card label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+/* Buttons in cards (your existing button styles will still apply) */
+.tool-card button[type="submit"] {
+  margin-top: 0.4rem;
+}

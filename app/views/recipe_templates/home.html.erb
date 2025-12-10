@@ -1,110 +1,102 @@
 <%if current_user == nil%>
-<article>
-  <h1>Hi! Welcome to Cook Book!</h1>
-  <div>
-    <p><a href="/users/sign_up">Create an Account</a> or <a href="/users/sign_in">Login</a> to get started creating and saving your own recipes.</p>
-    <p>Alternatively, you can view all user submitted recipes <a href="/recipes">here</a></p>
+<article class="home-guest">
+  <h1 class="home-title">Welcome to Cook Book</h1>
+
+  <p class="home-subtitle">
+    Save recipes, generate new ones, and build your personal cookbook.
+  </p>
+
+  <div class="home-actions">
+    <a href="/users/sign_up" class="home-btn primary">Create Account</a>
+    <a href="/users/sign_in" class="home-btn secondary">Log In</a>
   </div>
-  </article>
+
+  <p class="home-browse">
+    Just browsing?  
+    <a href="/recipes" class="browse-link">View all recipes →</a>
+  </p>
+</article>
 <%else%>
 
-<article>
-  <header>
-    <h2>
-      Generate a Recipe
-    </h2>
-  </header>
+<div class="recipe-tools">
 
-  <form action="/user_prompt" method="post">
-    <div>
-      <label for="prompt_box">
-        type in your dish
-      </label>
+  <article class="tool-card">
+    <header>
+      <h2>Generate a Recipe</h2>
+    </header>
 
-      <input type="text" id="prompt_box" name="query_prompt" placeholder="Generate a recipe for...">
-    </div>
+    <form action="/user_prompt" method="post">
+      <div>
+        <label for="prompt_box">
+          type in your dish
+        </label>
 
-        <button type="submit">
-      Submit
-    </button>
-  </form>
-</article>
+        <input type="text" id="prompt_box" name="query_prompt" placeholder="Generate a recipe for...">
+      </div>
 
-<article>
-  <header>
-    <h2>
-      Drop a Link
-    </h2>
-  </header>
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  </article>
 
-  <form action="/user_link" method="post">
-    <div>
-      <label for="prompt_box">
-        gimme da link
-      </label>
+  <article class="tool-card">
+    <header>
+      <h2>Got a Recipe? Drop the Link</h2>
+    </header>
 
-      <input type="text" id="prompt_box" name="query_link" placeholder="ahhhh.com/helpmehelpmeimtrapped">
-    </div>
+    <form action="/user_link" method="post">
+      <div>
+        <label for="link_box">
+          gimme da link
+        </label>
 
-        <button type="submit">
-      Submit
-    </button>
-  </form>
-</article>
+        <!-- only changed id to avoid duplicate "prompt_box", name stays the same -->
+        <input type="text" id="link_box" name="query_link" placeholder="ahhhh.com/helpmehelpmeimtrapped">
+      </div>
 
-<article>
-  <header>
-    <h2>
-      Manually Add A New Recipe
-    </h2>
-  </header>
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  </article>
+
+  <article class="tool-card">
+    <header>
+      <h2>Manually Add A New Recipe</h2>
+    </header>
 
     <form action="/insert_recipe" method="post">
-    <div>
-      <label for="title_box">
-        Title
-      </label>
+      <div>
+        <label for="title_box">Title</label>
+        <input type="text" id="title_box" name="query_title">
+      </div>
 
-      <input type="text" id="title_box" name="query_title">
-      
-    </div>
+      <div>
+        <label for="recipe_description_box">Description</label>
+        <textarea id="recipe_description_box" name="query_description" rows="3"></textarea>
+      </div>
 
-    <div>
-      <label for="recipe_description_box">Description</label>
-     <textarea
-      id="recipe_description_box"
-      name="query_description"
-      rows="3"></textarea>
-    </div>
+      <div>
+        <label for="recipe_ingredients_box">Ingredients</label>
+        <textarea id="recipe_ingredients_box" name="query_ingredients" rows="5"></textarea>
+      </div>
 
-    <div>
-     <label for="recipe_ingredients_box">Ingredients</label>
-      <textarea
-       id="recipe_ingredients_box"
-       name="query_ingredients"
-       rows="5">
-      </textarea>
-    </div>
+      <div>
+        <label for="recipe_instructions_box">Instructions</label>
+        <textarea id="recipe_instructions_box" name="query_instructions" rows="5"></textarea>
+      </div>
 
-   <div>
-     <label for="recipe_instructions_box">Instructions</label>
-     <textarea
-      id="recipe_instructions_box"
-      name="query_instructions"
-      rows="5"></textarea>
-   </div>
+      <div>
+        <label for="servings_box">Servings</label>
+        <input type="text" id="servings_box" name="query_servings">
+      </div>
 
-    <div>
-      <label for="servings_box">
-        Servings
-      </label>
+      <button type="submit">
+        Create recipe
+      </button>
+    </form>
+  </article>
 
-      <input type="text" id="servings_box" name="query_servings">
-    </div>
-
-    <button type="submit">
-      Create recipe
-    </button>
-  </form>
-</article>
+</div>
 <%end%>
