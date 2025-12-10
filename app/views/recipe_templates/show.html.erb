@@ -10,14 +10,6 @@
     </a>
   </div>
 
-  <%if current_user.id == @the_recipe.creator_id%>
-  <div>
-    <a href="/delete_recipe/<%= @the_recipe.id %>">
-      Delete recipe
-    </a>
-  </div>
-  <%end%>
-
   <dl>
     <dt>
       Title
@@ -54,11 +46,32 @@
       <%= @the_recipe.servings %>
     </dd>
   </dl>
+
+    <% if current_user.nil? %>
+
+  <%elsif current_user.id == @the_recipe.creator_id%>
+  <div>
+    <a href="/delete_recipe/<%= @the_recipe.id %>" class="btn-edit">
+      Delete recipe
+    </a>
+  </div>
+
+  <%end%>
 </article>
 
 
-
-<%if current_user.id == @the_recipe.creator_id%>
+<% if current_user.nil? %>
+<%elsif current_user.id == @the_recipe.creator_id%>
+  <button
+    class="btn-edit"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#editRecipeCard"
+    aria-expanded="false"
+    aria-controls="editRecipeCard">
+    Edit recipe
+  </button>
+<div class="collapse mt-3" id="editRecipeCard">
 <article>
   <header>
     <h2>
@@ -112,6 +125,7 @@
     </button>
   </form>
 </article>
+</div>
 <%end%>
 
 <hr>
