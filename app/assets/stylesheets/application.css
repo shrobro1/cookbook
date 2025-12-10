@@ -19,6 +19,20 @@ body {
   min-height: 100vh;
 }
 
+/* Mobile default: full width */
+header > div,
+main > div {
+  width: 100% !important;
+}
+
+/* On tablets/desktops: use 80% width centered */
+@media (min-width: 768px) {
+  header > div,
+  main > div {
+    width: 80% !important;
+  }
+}
+
 /* Shell around your content (the 80% width div in <main>) */
 main > div {
   background: rgba(15, 23, 42, 0.87);           /* dark slate */
